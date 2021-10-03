@@ -1,0 +1,9 @@
+{
+    "app_name": "Les guardiens de la nature",
+    "common_cancel": "Annuler",
+    "common_validate": "Valider",
+    "common_ok": "OK",
+    "sign_in_title": "Bienvenue",
+    "sign_in_subtitle": "Merci de vous connecter avec un compte",
+    "sign_in_button_label_google": "Connexion avec Google"
+}
