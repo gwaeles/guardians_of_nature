@@ -1,4 +1,4 @@
-package com.example.guardians_of_nature
+package fr.gwaeles.guardians_of_nature
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -15,6 +15,9 @@ jobs:
       - uses: actions/setup-java@v1
         with:
           java-version: "12.x"
+      - run: echo $GOOGLE_SERVICES | base64 -d > android/app/google-services.json
+        env:
+          GOOGLE_SERVICES: ${{ secrets.GOOGLE_SERVICES }}
       - uses: subosito/flutter-action@v1
         with:
           flutter-version: "2.5.1"

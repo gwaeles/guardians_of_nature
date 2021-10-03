@@ -6,6 +6,7 @@ _Feature_
 
 - Initiale commit
 - Add CI build scripts
+- Authentication with a Google Account
 
 _Fix_
 

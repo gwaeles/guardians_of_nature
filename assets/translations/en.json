@@ -1,0 +1,9 @@
+{
+    "app_name": "Guardians of nature",
+    "common_cancel": "Cancel",
+    "common_validate": "Validate",
+    "common_ok": "OK",
+    "sign_in_title": "Welcome",
+    "sign_in_subtitle": "Please sign in with an account",
+    "sign_in_button_label_google": "Sign In With Google"
+}

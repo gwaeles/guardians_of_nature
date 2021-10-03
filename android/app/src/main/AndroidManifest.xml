@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.guardians_of_nature">
+    package="fr.gwaeles.guardians_of_nature">
    <application
         android:label="guardians_of_nature"
         android:icon="@mipmap/ic_launcher">
