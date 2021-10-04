@@ -1,6 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:guardians_of_nature/ui/character/character_screen.dart';
+import 'package:guardians_of_nature/ui/character/new_character_screen.dart';
 import 'package:guardians_of_nature/ui/home/home_screen.dart';
 import 'package:guardians_of_nature/ui/launcher/launcher_screen.dart';
 
@@ -42,6 +44,8 @@ class MyApp extends StatelessWidget {
         routes: {
           "/launcher": (context) => const LauncherScreen(),
           "/home": (context) => const HomeScreen(),
+          "/character": (context) => const CharacterScreen(),
+          "/newcharacter": (context) => const NewCharacterScreen(),
         },
         initialRoute: "/launcher",
       ),

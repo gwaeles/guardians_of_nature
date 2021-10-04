@@ -33,6 +33,14 @@ class AuthBloc extends Cubit<AuthState> {
     await _signIn(silently: false);
   }
 
+  Future<void> signOut() async {
+    await storage.delete(key: 'firebaseAuthInfo');
+
+    googleSignIn.signOut();
+
+    emit(AuthState.notAuthenticated());
+  }
+
   ///
   /// --- Internal --- ///
   ///
@@ -118,7 +126,7 @@ class AuthBloc extends Cubit<AuthState> {
         ),
       );
     } else {
-      emit(AuthState.failure());
+      emit(AuthState.notAuthenticated());
     }
   }
 }
