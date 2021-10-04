@@ -5,5 +5,9 @@
     "common_ok": "OK",
     "sign_in_title": "Bienvenue",
     "sign_in_subtitle": "Merci de vous connecter avec un compte",
-    "sign_in_button_label_google": "Connexion avec Google"
+    "sign_in_button_label_google": "Connexion avec Google",
+    "home_screen_title": "Ma Maison",
+    "home_no_character_title": "Aucun personnage",
+    "home_no_character_subtitle": "Créer votre premier personnage en cliquan sur le bouton",
+    "character_screen_title": "Personnage"
 }

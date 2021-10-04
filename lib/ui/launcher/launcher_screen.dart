@@ -12,8 +12,22 @@ import 'package:guardians_of_nature/data/user/states/auth_state.dart';
 /// * Redirect to Home screen if user is authenticated
 /// * Display the Sign In form if not
 ///
-class LauncherScreen extends StatelessWidget {
+class LauncherScreen extends StatefulWidget {
   const LauncherScreen({Key? key}) : super(key: key);
+
+  @override
+  State<LauncherScreen> createState() => _LauncherScreenState();
+}
+
+class _LauncherScreenState extends State<LauncherScreen> {
+  @override
+  void initState() {
+    super.initState();
+
+    // Sign in silently here to ensure the listener in the BlocConsumer
+    // will be throwed
+    context.read<AuthBloc>().signInSilently();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,16 +44,16 @@ class LauncherScreen extends StatelessWidget {
         body: BlocConsumer<AuthBloc, AuthState>(
           listener: (context, state) {
             if (state is AuthStateAuthenticated) {
-              Navigator.pushNamed(context, '/home');
+              Navigator.pushReplacementNamed(context, '/home');
             }
           },
           builder: (context, state) {
             if (state is AuthStateNotAuthenticated) {
-              return SignInBody(
+              return _SignInBody(
                 onSignInRequest: () => _onSignInRequest(context),
               );
             } else {
-              return const LoaderBody();
+              return const _LoaderBody();
             }
           },
         ),
@@ -62,8 +76,8 @@ class LauncherScreen extends StatelessWidget {
 /// --- WIDGETS --- ///
 ///
 
-class LoaderBody extends StatelessWidget {
-  const LoaderBody({Key? key}) : super(key: key);
+class _LoaderBody extends StatelessWidget {
+  const _LoaderBody({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -73,10 +87,10 @@ class LoaderBody extends StatelessWidget {
   }
 }
 
-class SignInBody extends StatelessWidget {
+class _SignInBody extends StatelessWidget {
   final Function onSignInRequest;
 
-  const SignInBody({
+  const _SignInBody({
     Key? key,
     required this.onSignInRequest,
   }) : super(key: key);
