@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:guardians_of_nature/data/battle/entities/battle.dart';
+import 'package:guardians_of_nature/data/battle/repositories/battles_repository.dart';
 import 'package:guardians_of_nature/data/characters/entities/character.dart';
 import 'package:guardians_of_nature/data/characters/repositories/characters_repository.dart';
-import 'package:guardians_of_nature/data/user/providers/auth_bloc.dart';
+import 'package:guardians_of_nature/data/user/blocs/auth_bloc.dart';
 import 'package:guardians_of_nature/data/user/sources/google_sign_in_service.dart';
 import 'package:guardians_of_nature/data/user/states/auth_state.dart';
 import 'package:provider/provider.dart';
@@ -65,6 +67,26 @@ class MainProviders extends StatelessWidget {
             )..userId = userId;
           },
         ),
+        RepositoryProvider(
+          create: (context) {
+            final authState = context.read<AuthBloc>().state;
+            final userId = (authState is AuthStateAuthenticated)
+                ? authState.authInfo.userId
+                : null;
+
+            final battlesRef = fb.FirebaseFirestore.instance
+                .collection('battles')
+                .withConverter<Battle>(
+                  fromFirestore: (snapshots, _) =>
+                      Battle.fromJson(snapshots.data()!),
+                  toFirestore: (battle, _) => battle.toJson(),
+                );
+
+            return BattlesRepository(
+              battlesRef: battlesRef,
+            )..userId = userId;
+          },
+        ),
       ],
       builder: (context, child) {
         return BlocListener<AuthBloc, AuthState>(
@@ -75,6 +97,7 @@ class MainProviders extends StatelessWidget {
                 : null;
 
             context.read<CharactersRepository>().userId = userId;
+            context.read<BattlesRepository>().userId = userId;
           },
           child: child!,
         );

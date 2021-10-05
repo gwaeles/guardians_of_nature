@@ -1,65 +1,64 @@
 import 'package:flutter/material.dart';
-import 'package:guardians_of_nature/data/characters/entities/character.dart';
-import 'package:guardians_of_nature/data/characters/sources/skill_point_service.dart';
+import 'package:guardians_of_nature/data/characters/use_cases/skill_point_use_case.dart';
 
 class CharacterSkillsNotifier extends ChangeNotifier {
   CharacterSkillsNotifier({
-    required this.skillsService,
+    required this.useCase,
   });
 
-  final SkillPointsService skillsService;
+  final SkillPointsUseCase useCase;
   String name = '';
 
-  int get skillPoints => skillsService.skillPoints;
-  int get health => skillsService.health;
-  int get attack => skillsService.attack;
-  int get defense => skillsService.defense;
-  int get magik => skillsService.magik;
+  int get skillPoints => useCase.skillPoints;
+  int get health => useCase.health;
+  int get attack => useCase.attack;
+  int get defense => useCase.defense;
+  int get magik => useCase.magik;
 
   void decrementHealth() {
-    if (skillsService.decrementHealth()) {
+    if (useCase.decrementHealth()) {
       notifyListeners();
     }
   }
 
   void incrementHealth() {
-    if (skillsService.incrementHealth()) {
+    if (useCase.incrementHealth()) {
       notifyListeners();
     }
   }
 
   void decrementAttack() {
-    if (skillsService.decrementAttack()) {
+    if (useCase.decrementAttack()) {
       notifyListeners();
     }
   }
 
   void incrementAttack() {
-    if (skillsService.incrementAttack()) {
+    if (useCase.incrementAttack()) {
       notifyListeners();
     }
   }
 
   void decrementDefense() {
-    if (skillsService.decrementDefense()) {
+    if (useCase.decrementDefense()) {
       notifyListeners();
     }
   }
 
   void incrementDefense() {
-    if (skillsService.incrementDefense()) {
+    if (useCase.incrementDefense()) {
       notifyListeners();
     }
   }
 
   void decrementMagik() {
-    if (skillsService.decrementMagik()) {
+    if (useCase.decrementMagik()) {
       notifyListeners();
     }
   }
 
   void incrementMagik() {
-    if (skillsService.incrementMagik()) {
+    if (useCase.incrementMagik()) {
       notifyListeners();
     }
   }

@@ -5,7 +5,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:guardians_of_nature/data/user/entities/auth_info.dart';
-import 'package:guardians_of_nature/data/user/providers/auth_bloc.dart';
+import 'package:guardians_of_nature/data/user/blocs/auth_bloc.dart';
 import 'package:guardians_of_nature/data/user/sources/google_sign_in_service.dart';
 import 'package:guardians_of_nature/data/user/states/auth_state.dart';
 import 'package:mockito/annotations.dart';
@@ -68,7 +68,7 @@ void main() {
     act: (bloc) => bloc.signInSilently(),
     expect: () => [
       AuthState.authenticating(),
-      AuthState.failure(),
+      AuthState.notAuthenticated(),
     ],
   );
 

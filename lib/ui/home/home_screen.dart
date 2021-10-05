@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:guardians_of_nature/data/characters/entities/character.dart';
 import 'package:guardians_of_nature/data/characters/providers/characters_bloc.dart';
 import 'package:guardians_of_nature/data/characters/states/characters_state.dart';
-import 'package:guardians_of_nature/data/user/providers/auth_bloc.dart';
+import 'package:guardians_of_nature/data/user/blocs/auth_bloc.dart';
 import 'package:guardians_of_nature/ui/widgets/app_scaffold.dart';
 
 import 'home_screen_providers.dart';
@@ -87,38 +87,60 @@ class _BodyWidget extends StatelessWidget {
           return const _NoCharacterWidget();
         }
 
-        return Column(
+        return Stack(
           children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: const [
-                  SizedBox(
-                    width: 40,
-                    child: Center(
-                      child: Text(
-                        'Rank',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
+            Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: const [
+                      SizedBox(
+                        width: 40,
+                        child: Center(
+                          child: Text(
+                            'Rank',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
                         ),
                       ),
-                    ),
+                    ],
                   ),
-                ],
-              ),
+                ),
+                Expanded(
+                  child: ListView.builder(
+                    itemCount: data.length,
+                    itemBuilder: (context, index) {
+                      return _CharacterWidget(
+                        character: data[index],
+                      );
+                    },
+                  ),
+                ),
+              ],
             ),
-            Expanded(
-              child: ListView.builder(
-                itemCount: data.length,
-                itemBuilder: (context, index) {
-                  return _CharacterWidget(
-                    character: data[index],
-                  );
-                },
+            Positioned(
+              bottom: 16,
+              left: 16,
+              right: 88,
+              child: ElevatedButton(
+                onPressed: () => Navigator.pushNamed(
+                  context,
+                  '/battleroom',
+                ),
+                style: ElevatedButton.styleFrom(
+                  fixedSize: const Size(240, 56),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(28),
+                  ),
+                ),
+                child: const Text('Go to the battle room'),
               ),
-            ),
+            )
           ],
         );
       },
@@ -138,8 +160,11 @@ class _CharacterWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.pushNamed(context, '/character',
-            arguments: character.reference);
+        Navigator.pushNamed(
+          context,
+          '/character',
+          arguments: character.reference,
+        );
       },
       child: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -147,8 +172,25 @@ class _CharacterWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Expanded(
-              child: Text(
-                character.nickname,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    character.nickname,
+                    style: const TextStyle(
+                      fontSize: 18,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 5,
+                  ),
+                  Text(
+                    character.lastBattle?.toString() ?? '',
+                    style: TextStyle(
+                      color: Colors.grey.shade600,
+                    ),
+                  ),
+                ],
               ),
             ),
             SizedBox(

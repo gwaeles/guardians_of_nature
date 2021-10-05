@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:guardians_of_nature/data/user/providers/auth_bloc.dart';
+import 'package:guardians_of_nature/data/user/blocs/auth_bloc.dart';
 import 'package:guardians_of_nature/data/user/states/auth_state.dart';
 
 ///
