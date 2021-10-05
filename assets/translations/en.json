@@ -9,5 +9,12 @@
     "home_screen_title": "My House",
     "home_no_character_title": "No character",
     "home_no_character_subtitle": "Add your first character by clicking on the button",
-    "character_screen_title": "Character"
+    "character_screen_title": "Character",
+    "character_rank": "Rank",
+    "battle_screen_title": "Battle room",
+    "battle_create_battle": "Create a battle",
+    "battle_waiting_for_player": "Waiting for player",
+    "battle_no_battle_title": "No battle",
+    "battle_no_battle_subtitle": "Start a new battle",
+    "battle_attack": "Attack !"
 }

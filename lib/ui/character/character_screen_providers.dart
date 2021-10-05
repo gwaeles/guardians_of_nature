@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:guardians_of_nature/data/characters/providers/character_bloc.dart';
 import 'package:guardians_of_nature/data/characters/providers/character_skills_notifier.dart';
-import 'package:guardians_of_nature/data/characters/sources/skill_point_service.dart';
 import 'package:guardians_of_nature/data/characters/states/character_state.dart';
+import 'package:guardians_of_nature/data/characters/use_cases/skill_point_use_case.dart';
 import 'package:provider/provider.dart';
 
 ///
@@ -35,10 +35,10 @@ class CharacterScreenProviders extends StatelessWidget {
           create: (context) {
             // Need to be created when CharacterBloc is loaded
             final CharacterBloc bloc = context.read();
-            late SkillPointsService skillsService;
+            late SkillPointsUseCase usecase;
             if (bloc.state is CharacterLoaded) {
               final character = (bloc.state as CharacterLoaded).character;
-              skillsService = SkillPointsService(
+              usecase = SkillPointsUseCase(
                 skillPoints: character.skillPoints,
                 initialHealth: character.health,
                 initialAttack: character.attack,
@@ -46,11 +46,11 @@ class CharacterScreenProviders extends StatelessWidget {
                 initialMagik: character.magik,
               );
             } else {
-              skillsService = SkillPointsService();
+              usecase = SkillPointsUseCase();
             }
 
             return CharacterSkillsNotifier(
-              skillsService: skillsService,
+              useCase: usecase,
             );
           },
         ),

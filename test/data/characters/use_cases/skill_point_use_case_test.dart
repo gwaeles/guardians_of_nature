@@ -1,10 +1,10 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:guardians_of_nature/data/characters/sources/skill_point_service.dart';
+import 'package:guardians_of_nature/data/characters/use_cases/skill_point_use_case.dart';
 
 void main() {
-  test('skill point service ...', () {
+  test('skill point use case ...', () {
     //GIVEN
-    final service = SkillPointsService();
+    final service = SkillPointsUseCase();
 
     expect(service.skillPoints, 12);
     expect(service.health, 10);
@@ -27,9 +27,9 @@ void main() {
     expect(service.attack, 0);
   });
 
-  test('skill point service complex ...', () {
+  test('skill point use case complex ...', () {
     //GIVEN
-    final service = SkillPointsService(
+    final service = SkillPointsUseCase(
       initialHealth: 44,
       initialDefense: 9,
       initialAttack: 3,

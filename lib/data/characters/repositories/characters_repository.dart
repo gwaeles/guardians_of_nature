@@ -25,7 +25,7 @@ class CharactersRepository {
   }
 
   Stream<List<Character>> watchCharacters() {
-    log("[GWA] CharactersRepository watch Characters");
+    log("[CHARS] CharactersRepository watch Characters");
 
     if (_characterController == null) {
       _characterController = BehaviorSubject<List<Character>>();
@@ -67,14 +67,12 @@ class CharactersRepository {
   }
 
   void _dispose() {
-    log("[GWA] CharactersRepository dispose");
+    log("[CHARS] CharactersRepository dispose");
     _subscription?.cancel();
     _subscription = null;
   }
 
   void _onControllerCancelled() {
-    log("[GWA] _controller.onCancel, hasListener: ${_characterController?.hasListener}");
-    // Cancel DB subscription on last listener cancel
     if (_characterController?.hasListener != true) {
       _characterController?.close();
       _dispose();

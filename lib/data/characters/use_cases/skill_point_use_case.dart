@@ -1,12 +1,12 @@
 import 'dart:math';
 
-class SkillPointsService {
+class SkillPointsUseCase {
   final int initialHealth;
   final int initialAttack;
   final int initialDefense;
   final int initialMagik;
 
-  SkillPointsService({
+  SkillPointsUseCase({
     this.skillPoints = 12,
     this.initialHealth = 10,
     this.initialAttack = 0,

@@ -9,5 +9,12 @@
     "home_screen_title": "Ma Maison",
     "home_no_character_title": "Aucun personnage",
     "home_no_character_subtitle": "Créer votre premier personnage en cliquan sur le bouton",
-    "character_screen_title": "Personnage"
+    "character_screen_title": "Personnage",
+    "character_rank": "Rang",
+    "battle_screen_title": "Salle de combat",
+    "battle_create_battle": "Nouveau combat",
+    "battle_waiting_for_player": "En attente d'un joueur",
+    "battle_no_battle_title": "Aucune batailles",
+    "battle_no_battle_subtitle": "Start a new battle",
+    "battle_attack": "Attaque !"
 }

@@ -8,7 +8,7 @@ import 'package:flutter/widgets.dart';
 import 'package:guardians_of_nature/data/characters/entities/character.dart';
 import 'package:guardians_of_nature/data/characters/providers/character_skills_notifier.dart';
 import 'package:guardians_of_nature/data/characters/providers/characters_bloc.dart';
-import 'package:guardians_of_nature/data/user/providers/auth_bloc.dart';
+import 'package:guardians_of_nature/data/user/blocs/auth_bloc.dart';
 import 'package:guardians_of_nature/data/user/states/auth_state.dart';
 import 'package:guardians_of_nature/ui/widgets/app_scaffold.dart';
 import 'package:provider/provider.dart';

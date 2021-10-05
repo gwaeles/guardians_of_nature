@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:guardians_of_nature/data/characters/providers/character_skills_notifier.dart';
 import 'package:guardians_of_nature/data/characters/providers/characters_bloc.dart';
-import 'package:guardians_of_nature/data/characters/sources/skill_point_service.dart';
+import 'package:guardians_of_nature/data/characters/use_cases/skill_point_use_case.dart';
 import 'package:provider/provider.dart';
 
 ///
@@ -29,12 +29,11 @@ class NewCharacterScreenProviders extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (context) => CharacterSkillsNotifier(
-            skillsService: SkillPointsService(),
+            useCase: SkillPointsUseCase(),
           ),
         )
       ],
       child: child,
     );
-    ;
   }
 }

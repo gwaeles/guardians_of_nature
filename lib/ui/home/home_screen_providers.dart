@@ -19,7 +19,9 @@ class HomeScreenProviders extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => CharactersBloc(repository: context.read())..init(),
+      create: (context) => CharactersBloc(
+        repository: context.read(),
+      )..init(),
       child: child,
     );
   }
